@@ -1,0 +1,20 @@
+studentgroups
+CSE-IOT(IInd-Year) OOP 5 ADBMS 7 DCN 7 DMS 3 OS 5
+CSE-BAO(IInd-Year) FLAT 7 ADBMS 4 DCN 3 DMS 8 OS 6
+CSE-CCVT(IInd-Year) FLAT 5 OOP 6 ADBMS 4 DMS 5 OS 5
+CSE-ITI(IInd-Year) FLAT 5 OOP 8 ADBMS 6 DCN 3 OS 5
+CSE-AIML(IInd-Year) FLAT 8 OOP 4 ADBMS 3 DCN 3 DMS 5
+teachers
+KumarUtkarsh DMS
+A.Gupta DMS
+A.K.Banerjee OOP
+M.Sharma OOP
+P.Verma OS
+O.N.Singh FLAT
+K.P.Sinha FLAT
+D.Garg OS
+T.Tyagi DCN
+A.Singh DCN
+KS.Tanwar ADBMS
+S.Tyagi ADBMS
+end
