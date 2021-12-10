@@ -8,7 +8,7 @@ public class conn{
     public conn(){  
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            c =DriverManager.getConnection("jdbc:mysql:///timetable","root","kunnu@555");    
+            c =DriverManager.getConnection("jdbc:mysql:///timetable","root","pass");    
             s =c.createStatement();  
             
            
