@@ -3,12 +3,12 @@ package source;
 import java.sql.*;  
 
 public class conn{
-    Connection c;
-    Statement s;
+    public Connection c;
+    public Statement s;
     public conn(){  
         try{  
             Class.forName("com.mysql.jdbc.Driver");  
-            c =DriverManager.getConnection("jdbc:mysql:///library","root","kunnu@555");    
+            c =DriverManager.getConnection("jdbc:mysql:///timetable","root","kunnu@555");    
             s =c.createStatement();  
             
            

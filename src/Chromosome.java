@@ -1,6 +1,9 @@
 package scheduler;
 import java.io.*;
 import java.util.*;
+import javax.swing.*;
+import source.printtimetable;
+
 public class Chromosome implements Comparable<Chromosome>,Serializable{
 	static double crossoverrate=inputdata.crossoverrate;
 	static double mutationrate=inputdata.mutationrate;
@@ -52,26 +55,37 @@ public class Chromosome implements Comparable<Chromosome>,Serializable{
 		return fitness;
 	}
 
-	public void printTimeTable(){
+	public void printTimeTable(String stugroup){
+		String[][] timetabele=new String[days][hours];
+		String batch="";
 		for(int i=0;i<nostgrp;i++){
 			boolean status=false;
 			int l=0;
 			while(!status){
 				if(TimeTable.slot[gene[i].slotno[l]]!=null){
 					System.out.println("Batch "+TimeTable.slot[gene[i].slotno[l]].studentgroup.name+" Timetable-");
+					batch=TimeTable.slot[gene[i].slotno[l]].studentgroup.name;
 					status=true;
 				}
 				l++;
 			}
-			for(int j=0;j<days;j++){
-				for(int k=0;k<hours;k++){
-					if(TimeTable.slot[gene[i].slotno[k+j*hours]]!=null)
-						System.out.print(TimeTable.slot[gene[i].slotno[k+j*hours]].subject+" ");
-					else System.out.print("*FREE* ");
+			if(batch.equals(stugroup)){
+				for(int j=0;j<days;j++){
+					for(int k=0;k<hours;k++){
+						if(TimeTable.slot[gene[i].slotno[k+j*hours]]!=null){
+							System.out.print(TimeTable.slot[gene[i].slotno[k+j*hours]].subject+" ");
+							timetabele[j][k]=TimeTable.slot[gene[i].slotno[k+j*hours]].subject;
+						}
+						else {
+							System.out.print("*FREE* ");
+							timetabele[j][k]="Free";
+						}
+					}
 				}
-				System.out.println("");
+				new printtimetable(timetabele).setVisible(true);
+				System.out.println("\n\n\n");
+				break;
 			}
-			System.out.println("\n\n\n");
 		}
 	}
 	

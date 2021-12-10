@@ -8,10 +8,12 @@ public class SchedulerMain{
 	int populationsize=1000;
 	int maxgenerations=100;
 	public static Chromosome finalson;
-	public SchedulerMain() {
-		Utility.printInputData();
+	static String stugroup;
+	public SchedulerMain(String stugroup) {
+		this.stugroup=stugroup;
+		//Utility.printInputData();
 		new TimeTable();
-		Utility.printSlots();
+		//Utility.printSlots();
 		initialisePopulation();
 		createNewGenerations();
 	}
@@ -52,7 +54,7 @@ public class SchedulerMain{
 				System.out.println("****************************************************************************************");
 				System.out.println("\n\nSuitable Timetable has been generated in the "+i+"th Chromosome of "+(nogenerations+2)+" generation with fitness 1.");
 				System.out.println("\nGenerated Timetable is:");
-				son.printTimeTable();
+				son.printTimeTable(stugroup);
 				finalson=son;
 				break;
 			}
@@ -148,6 +150,6 @@ public class SchedulerMain{
 	}
 	
 	public static void main(String[] args) {
-		new SchedulerMain();
+		new SchedulerMain(stugroup);
 	}
 }

@@ -4,7 +4,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
 
-public class login extends JFrame implements ActionListener{
+public class loginadmin extends JFrame implements ActionListener{
 
 	private JPanel panel;
 	private JTextField textField;
@@ -12,7 +12,7 @@ public class login extends JFrame implements ActionListener{
     private JButton button1,button2;
 
 
-	public login() {
+	public loginadmin() {
             
 	setBackground(new Color(169, 169, 169));	
     setBounds(600, 300, 600, 400);
@@ -44,7 +44,7 @@ public class login extends JFrame implements ActionListener{
 	passwordField.setColumns(10);
 	panel.add(passwordField);
 
-	button1 = new JButton("Login");	            
+	button1 = new JButton("login");	            
 	button1.setForeground(new Color(46, 139, 87));
 	button1.setBackground(new Color(250, 250, 210));
 	button1.setBounds(119, 241, 153, 59);
@@ -53,7 +53,7 @@ public class login extends JFrame implements ActionListener{
 	button1.addActionListener(this);
 
 		
-    button2 = new JButton("SignUp");
+    button2 = new JButton("Back");
 	button2.setForeground(new Color(46, 139, 87));
 	button2.setFont(new Font("Trebuchet MS", Font.BOLD, 16));
 	button2.setBackground(new Color(250, 250, 210));
@@ -68,19 +68,18 @@ public class login extends JFrame implements ActionListener{
     		if(ae.getSource()==button1){
     			try {
                     conn con = new conn();
-                    String sql = "select * from user where User_id=? and Password=?";
+                    String sql = "select * from admin where id=? and password=?";
                     PreparedStatement st = con.c.prepareStatement(sql);
 
-                    calculateBlockHash bhash= new calculateBlockHash(passwordField.getText(),"MD5");
                     st.setString(1, textField.getText());
-                    st.setString(2,bhash.hash);
+                    st.setString(2,passwordField.getText());
 
-                    int uid=Integer.parseInt(textField.getText());
                     ResultSet rs = st.executeQuery();
                     if (rs.next()) {
                         this.setVisible(false);
+                        new adminmenu().setVisible(true);
                     } else
-						JOptionPane.showMessageDialog(null, "Invalid Login...!.");
+						JOptionPane.showMessageDialog(null, "Invalid login...!.");
                 con.c.close();
                 }
 		 		catch (Exception e) {
@@ -89,11 +88,11 @@ public class login extends JFrame implements ActionListener{
     		}   
     		if(ae.getSource()==button2){
     			this.setVisible(false);
-    			//new signup().setVisible(true);
+    			new actor().setVisible(true);
     		}
     	} 
 
   	public static void main(String[] args) {
-        new login().setVisible(true);
+        new loginadmin().setVisible(true);
 	}
 }

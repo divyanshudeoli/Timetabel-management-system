@@ -5,12 +5,12 @@ import javax.swing.*;
 import javax.swing.border.*;
 import java.util.*;
 import java.awt.event.*;
-
+import scheduler.SchedulerMain;
 
 public class adminmenu extends JFrame implements ActionListener {
 
     private JPanel contentPane;
-    private JButton baddteacher,baddstudent,bsearch,bchangepass,baddbook;
+    private JButton baddteacher,baddstudent,bupdateteacher,bviewtimetable,bupdatestudent;
     public adminmenu() {
     	setBounds(600, 300, 600, 400);
 		contentPane = new JPanel();
@@ -34,48 +34,50 @@ public class adminmenu extends JFrame implements ActionListener {
 	    baddstudent.setForeground(Color.WHITE);
 		contentPane.add(baddstudent);
 
-		bchangepass = new JButton("Change Password");
-		bchangepass.addActionListener(this);
-		bchangepass.setFont(new Font("Tahoma", Font.BOLD, 10));
-		bchangepass.setBounds(423, 80, 145, 65);
-	    bchangepass.setBackground(Color.BLACK);
-	    bchangepass.setForeground(Color.WHITE);
-		contentPane.add(bchangepass);
+		bviewtimetable = new JButton("View Timetable");
+		bviewtimetable.addActionListener(this);
+		bviewtimetable.setFont(new Font("Tahoma", Font.BOLD, 10));
+		bviewtimetable.setBounds(423, 80, 145, 65);
+	    bviewtimetable.setBackground(Color.BLACK);
+	    bviewtimetable.setForeground(Color.WHITE);
+		contentPane.add(bviewtimetable);
 
-		baddbook = new JButton("Add Book");
-		baddbook.addActionListener(this);
-		baddbook.setFont(new Font("Tahoma", Font.BOLD, 10));
-		baddbook.setBounds(115, 230, 145, 65);
-	    baddbook.setBackground(Color.BLACK);
-	    baddbook.setForeground(Color.WHITE);
-		contentPane.add(baddbook);
+		/*bupdatestudent = new JButton("Add Book");
+		bupdatestudent.addActionListener(this);
+		bupdatestudent.setFont(new Font("Tahoma", Font.BOLD, 10));
+		bupdatestudent.setBounds(115, 230, 145, 65);
+	    bupdatestudent.setBackground(Color.BLACK);
+	    bupdatestudent.setForeground(Color.WHITE);
+		contentPane.add(bupdatestudent);
 
-		bsearch = new JButton("Search Book");
-		bsearch.addActionListener(this);
-		bsearch.setFont(new Font("Tahoma", Font.BOLD, 10));
-		bsearch.setBounds(330, 230, 145, 65);
-	    bsearch.setBackground(Color.BLACK);
-	    bsearch.setForeground(Color.WHITE);
-		contentPane.add(bsearch);
+		bupdateteacher = new JButton("Search Book");
+		bupdateteacher.addActionListener(this);
+		bupdateteacher.setFont(new Font("Tahoma", Font.BOLD, 10));
+		bupdateteacher.setBounds(330, 230, 145, 65);
+	    bupdateteacher.setBackground(Color.BLACK);
+	    bupdateteacher.setForeground(Color.WHITE);
+		contentPane.add(bupdateteacher);*/
 	}
 	public void actionPerformed(ActionEvent ae){
     	try{
-    		if(ae.getSource()==baddbook){
-    			this.setVisible(false);
-    		}
-    		if(ae.getSource()==bchangepass){
-    			this.setVisible(false);
-    		}
-    		if(ae.getSource()==bsearch){
-    			this.setVisible(false);
-    		}
-
     		if(ae.getSource()==baddteacher){
     			this.setVisible(false);
+    			new addteacher().setVisible(true);
     		}
     		if(ae.getSource()==baddstudent){
     			this.setVisible(false);
+    			new addstudent().setVisible(true);		
     		}
+    		if(ae.getSource()==bviewtimetable){
+    			this.setVisible(false);
+    			new selectstudentgroup().setVisible(true);
+    		}
+    		/*if(ae.getSource()==bupdatestudent){
+    			this.setVisible(false);
+    		}
+    		if(ae.getSource()==bupdateteacher){
+    			this.setVisible(false);
+    		}*/
 
     	}
     	catch(Exception e){e.printStackTrace();}
